@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 
 	"google.golang.org/grpc"
@@ -12,8 +13,10 @@ import (
 var addr string = "localhost:50052"
 
 func main() {
-	conn, err := grpc.NewClient(addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	number := flag.Int("number", 0, "The number to be used in factorization")
+	flag.Parse()
 
+	conn, err := grpc.NewClient(addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Failed to connect: %v\n", err)
 	}
@@ -21,5 +24,5 @@ func main() {
 
 	c := pb.NewCalculatorServiceClient(conn)
 
-	doSum(c)
+	doFactorization(c, int32(*number))
 }

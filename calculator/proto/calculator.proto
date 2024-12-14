@@ -5,7 +5,9 @@ package calculator;
 option go_package = "github.com/caspereijkens/grpc-go-course/calculator/proto";
 
 import "sum.proto";
+import "factorize.proto";
 
 service CalculatorService {
     rpc Sum (SumRequest) returns (SumResponse);
+    rpc Factorize (PrimeFactorRequest) returns (stream PrimeFactorResponse);
 }
