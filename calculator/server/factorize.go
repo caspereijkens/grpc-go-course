@@ -10,7 +10,7 @@ import (
 func (s *Server) Factorize(in *pb.PrimeFactorRequest, stream grpc.ServerStreamingServer[pb.PrimeFactorResponse]) error {
 	log.Printf("Factorize function was invoked with %v\n", in)
 
-	N := int(in.Integer)
+	N := int(in.Number)
 
 	p := 2
 
@@ -21,7 +21,7 @@ func (s *Server) Factorize(in *pb.PrimeFactorRequest, stream grpc.ServerStreamin
 		}
 
 		stream.Send(&pb.PrimeFactorResponse{
-			PrimeFactor: int32(p),
+			Result: uint64(p),
 		})
 
 		N = N / p

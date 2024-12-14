@@ -24,5 +24,5 @@ func main() {
 
 	c := pb.NewCalculatorServiceClient(conn)
 
-	doFactorization(c, int32(*number))
+	doFactorization(c, uint64(*number))
 }

@@ -8,11 +8,11 @@ import (
 	pb "github.com/caspereijkens/grpc-go-course/calculator/proto"
 )
 
-func doFactorization(c pb.CalculatorServiceClient, number int32) {
+func doFactorization(c pb.CalculatorServiceClient, number uint64) {
 	log.Println("doFactorization was invoked")
 
 	req := &pb.PrimeFactorRequest{
-		Integer: number,
+		Number: number,
 	}
 
 	stream, err := c.Factorize(context.Background(), req)
@@ -30,6 +30,6 @@ func doFactorization(c pb.CalculatorServiceClient, number int32) {
 		if err != nil {
 			log.Fatalf("Error while reading the stream: %v\n", err)
 		}
-		log.Printf("Prime Factor: %d\n", msg.PrimeFactor)
+		log.Printf("Prime Factor: %d\n", msg.Result)
 	}
 }
