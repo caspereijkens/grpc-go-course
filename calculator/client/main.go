@@ -13,7 +13,7 @@ import (
 var addr string = "localhost:50052"
 
 func main() {
-	number := flag.Int("number", 0, "The number to be used in factorization")
+	// number := flag.Int("number", 0, "The number to be used in factorization")
 	flag.Parse()
 
 	conn, err := grpc.NewClient(addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
@@ -24,5 +24,6 @@ func main() {
 
 	c := pb.NewCalculatorServiceClient(conn)
 
-	doFactorization(c, uint64(*number))
+	// doFactorization(c, uint64(*number))
+	doMax(c)
 }

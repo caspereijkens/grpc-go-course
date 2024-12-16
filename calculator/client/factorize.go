@@ -18,7 +18,7 @@ func doFactorization(c pb.CalculatorServiceClient, number uint64) {
 	stream, err := c.Factorize(context.Background(), req)
 
 	if err != nil {
-		log.Fatalf("Error while calling GreetManyTimes: %v\n", err)
+		log.Fatalf("Error while calling Factorize: %v\n", err)
 	}
 
 	for {
