@@ -25,5 +25,9 @@ func main() {
 	c := pb.NewCalculatorServiceClient(conn)
 
 	// doFactorization(c, uint64(*number))
-	doMax(c)
+	numbers := []int32{3, -5, -9, 54, -23, 8, -13, 21, -34, 55, -89}
+
+	for _, number := range numbers {
+		doSqrt(c, number)
+	}
 }
